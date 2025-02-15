@@ -1,0 +1,18 @@
+﻿
+<MudPaper Width="250px" Class="d-inline-flex py-3" Elevation="0">
+    <MudNavMenu Color="Color.Dark" Bordered="true" Class="mud-width-full">       
+        <MudDivider Class="my-2" />
+        <MudNavLink Href="/dashboard" Icon="@Icons.Material.Filled.Dashboard">Dashboard</MudNavLink>
+        <MudNavLink Href="/servers" Icon="@Icons.Material.Filled.Storage">Servers</MudNavLink>
+        <MudNavLink Href="/weather" Icon="@Icons.Material.Filled.Water">Weather</MudNavLink>
+        <MudNavLink Href="/billing" Icon="@Icons.Material.Filled.Receipt" Disabled="true">Billing</MudNavLink>
+        <MudNavGroup Title="Settings" Icon="@Icons.Material.Filled.Settings" Expanded="true">
+            <MudNavGroup Title="Users" Icon="@Icons.Material.Filled.People" Expanded="true">
+                <MudNavLink Href="/users/profile" Icon="@Icons.Material.Filled.AssignmentInd" >Profile</MudNavLink>
+                <MudNavLink Href="/users/mybooking" Icon="@Icons.Material.Filled.MeetingRoom">My Booking</MudNavLink>
+                <MudNavLink Href="/users/mywallet" Icon="@Icons.Material.Filled.AccountBalanceWallet">My Account</MudNavLink>
+            </MudNavGroup>
+            <MudNavLink Href="/security" Icon="@Icons.Material.Filled.Security" >Security</MudNavLink>
+        </MudNavGroup>
+    </MudNavMenu>
+</MudPaper>

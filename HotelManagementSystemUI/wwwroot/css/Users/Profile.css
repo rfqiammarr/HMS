@@ -1,0 +1,60 @@
+﻿.profile-container {
+/*    display: flex;*/
+    position: relative;
+}
+
+.cover-image {
+    position: relative;
+    background-image: url('/image/Users/Components/profile-cover.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 200px;
+    border-radius: 8px; /* Agar sudut gambar lebih lembut */
+    overflow: hidden; /* Pastikan gambar tidak meluap */
+    filter: blur(1px);
+}
+
+.image-profile {
+    width: 200px; /* Sesuaikan ukuran */
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid white;
+    position: relative; /* Ubah dari absolute ke relative */
+    transform: translateY(-50%); /* Supaya tetap pada posisi di tengah */
+}
+
+.profile-bio {
+   margin-left:18rem;
+   margin-top: -13rem !important;
+}
+
+.text-muted-custom {
+    color: #6c757d; /* Warna abu-abu yang serupa dengan Bootstrap's text-muted */
+    font-style: italic; /* Mirip dengan style card-footer di Bootstrap */
+    margin-top: 0.5rem;
+}
+
+.role-user {
+    color: #6c757d;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.color-primary {
+    color: #636669;
+}
+
+.mud-divider {
+    border-top: 2px solid #6c757d; /* Mengubah warna dan ketebalan garis */
+}
+
+@media (max-width: 768px) {
+    .image-profile {
+        width: 80px; /* Menyesuaikan ukuran gambar pada layar kecil */
+        height: 80px;
+    }
+
+    .cover-image {
+        height: 150px; /* Menyesuaikan ukuran cover pada layar kecil */
+    }
+}

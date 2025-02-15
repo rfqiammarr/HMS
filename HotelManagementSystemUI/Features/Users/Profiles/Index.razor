@@ -1,0 +1,52 @@
+﻿@page "/users/profile"
+@rendermode InteractiveServer
+
+<MudContainer Class="profile-container" MaxWidth="MaxWidth.ExtraLarge">
+    <MudPaper Class="ma-2" Elevation="3">
+        <MudCard>
+            <MudCardMedia Image="image/Users/Components/profile-cover.jpg" Class="cover-image" />
+
+            <MudCardContent>
+                <!-- Gambar Profil -->
+                <MudGrid>
+                    <MudItem xs="12" sm="4">
+                        <MudTooltip Text="Click to change your profile picture">
+                            <MudImage Src="image/Users/Components/example-avatar.jpg"
+                                      Alt="Here's Johnny"
+                                      Elevation="25"
+                                      Class="image-profile"
+                                      FallbackSrc="image/Users/Components/example-avatar.jpg" />
+                        </MudTooltip>
+                    </MudItem>
+                    <MudItem Class="profile-bio" xs="12" sm="8">
+                        @* <div class="d-flex align-items-center justify-content-between"> *@
+                        <div class="d-flex align-items-center">
+                                <MudText Class="role-user" Typo="Typo.h5">Employee</MudText>
+                                <MudText Class="role-user ms-2" Typo="Typo.h5">| Manager</MudText>
+                            <!-- Tombol dipindahkan ke kanan dengan ms-auto -->
+                            @* <MudButton Class="ms-auto" Variant="Variant.Outlined" Color="Color.Success">Edit Profile</MudButton> *@
+
+                        </div>
+
+                        <MudText Class="mt-5 color-primary" Typo="Typo.h4">Abdullah Mchartney</MudText>
+                        <MudText Typo="Typo.body2" Class="mb-1 text-muted">abdullahmcartney@mail.com</MudText>
+                    </MudItem>
+                    <MudButton @onclick="OpenDialogAsync" Class="ms-auto" Style="margin-top:-3rem; margin-bottom:1rem;" Variant="Variant.Filled" Color="Color.Primary">Edit Profile</MudButton>
+                </MudGrid>
+                <MudDivider Class="my-4 mud-divider" />
+
+            <MudText Typo="Typo.h5" Class="mb-1 text-muted mb-5">Point & Member</MudText>
+
+                <MudTabs Elevation="2" Rounded="true" ApplyEffectsToContainer="true" PanelClass="pa-6">
+                    <MudTabPanel Text="Tab One">
+                    </MudTabPanel>
+                    <MudTabPanel Text="Tab Two">
+                        <MudText>Content Two</MudText>
+                    </MudTabPanel>
+                </MudTabs>            
+        </MudCardContent>
+        </MudCard>
+    </MudPaper>
+</MudContainer>
+
+
