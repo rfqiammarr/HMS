@@ -9,7 +9,7 @@ public partial class DialogAdd
     [CascadingParameter]
     private MudDialogInstance MudDialog { get; set; }
 
-    private void Submit() => MudDialog.Close(DialogResult.Ok(true));
+    //private void Submit() => MudDialog.Close(DialogResult.Ok(true));
 
-    private void Cancel() => MudDialog.Cancel();
+    //private void Cancel() => MudDialog.Cancel();      
 }

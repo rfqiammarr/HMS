@@ -1,4 +1,5 @@
-﻿@page "/users/profile"
+﻿@* @page "/users/profile" *@
+@page "/"
 @rendermode InteractiveServer
 
 <MudContainer Class="profile-container" MaxWidth="MaxWidth.ExtraLarge">
@@ -39,6 +40,34 @@
 
                 <MudTabs Elevation="2" Rounded="true" ApplyEffectsToContainer="true" PanelClass="pa-6">
                     <MudTabPanel Text="Tab One">
+                        <MudTable T="Element" Items="elements" Dense="true" Hover="true">
+                            <ToolBarContent>
+                                <MudText Typo="Typo.h6">Periodic Elements</MudText>
+                            </ToolBarContent>
+                            <HeaderContent>
+                                <MudTh><MudTableSortLabel SortLabel="nr_field" T="Element">Nr</MudTableSortLabel></MudTh>
+                                <MudTh><MudTableSortLabel SortLabel="sign_field" T="Element">Sign</MudTableSortLabel></MudTh>
+                                <MudTh><MudTableSortLabel SortLabel="name_field" T="Element">Name</MudTableSortLabel></MudTh>
+                                <MudTh><MudTableSortLabel SortLabel="position_field" T="Element">Position</MudTableSortLabel></MudTh>
+                                <MudTh><MudTableSortLabel SortLabel="mass_field" T="Element">Molar mass</MudTableSortLabel></MudTh>
+                            </HeaderContent>
+                            <RowTemplate>
+                                <MudTd DataLabel="Nr">@context.Number</MudTd>
+                                <MudTd DataLabel="Sign">@context.Sign</MudTd>
+                                <MudTd DataLabel="Name">@context.Name</MudTd>
+                                <MudTd DataLabel="Position">@context.Position</MudTd>
+                                <MudTd DataLabel="Molar mass">@context.Molar</MudTd>
+                            </RowTemplate>
+                            <NoRecordsContent>
+                                <MudText>No matching records found</MudText>
+                            </NoRecordsContent>
+                            <LoadingContent>
+                                <MudText>Loading...</MudText>
+                            </LoadingContent>
+                            <PagerContent>
+                                <MudTablePager />
+                            </PagerContent>
+                        </MudTable>
                     </MudTabPanel>
                     <MudTabPanel Text="Tab Two">
                         <MudText>Content Two</MudText>
@@ -50,3 +79,28 @@
 </MudContainer>
 
 
+@code {
+    public class Element
+    {
+        public int Number { get; set; }
+        public string Sign { get; set; }
+        public string Name { get; set; }
+        public string Position { get; set; }
+        public double Molar { get; set; }
+    }
+
+    // Data dummy untuk elemen periodik
+    private List<Element> elements = new List<Element>
+    {
+        new Element { Number = 1, Sign = "H", Name = "Hydrogen", Position = "1", Molar = 1.008 },
+        new Element { Number = 2, Sign = "He", Name = "Helium", Position = "18", Molar = 4.0026 },
+        new Element { Number = 3, Sign = "Li", Name = "Lithium", Position = "1", Molar = 6.94 },
+        new Element { Number = 4, Sign = "Be", Name = "Beryllium", Position = "2", Molar = 9.0122 },
+        new Element { Number = 5, Sign = "B", Name = "Boron", Position = "13", Molar = 10.81 },
+        new Element { Number = 6, Sign = "C", Name = "Carbon", Position = "14", Molar = 12.011 },
+        new Element { Number = 7, Sign = "N", Name = "Nitrogen", Position = "15", Molar = 14.007 },
+        new Element { Number = 8, Sign = "O", Name = "Oxygen", Position = "16", Molar = 15.999 },
+        new Element { Number = 9, Sign = "F", Name = "Fluorine", Position = "17", Molar = 18.998 },
+        new Element { Number = 10, Sign = "Ne", Name = "Neon", Position = "18", Molar = 20.180 },
+    };
+}

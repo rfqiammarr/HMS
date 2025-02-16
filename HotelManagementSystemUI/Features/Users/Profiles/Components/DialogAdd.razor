@@ -1,12 +1,92 @@
-﻿<MudDialog>
+﻿@using System.ComponentModel.DataAnnotations
+
+<MudDialog>
     <TitleContent>
         Dialog Title
     </TitleContent>
     <DialogContent>
-        Dialog Content
+        <EditForm Model="@model" OnValidSubmit="OnValidSubmit">
+            <DataAnnotationsValidator />
+            <MudGrid Class="mb-5">
+                <MudItem xs="9">
+                    <MudTextField 
+                                  ShrinkLabel
+                                  Label="Full Name"
+                                  @bind-Value="model.FullName"
+                                  For="@(() => model.FullName)" />
+                </MudItem>
+                <MudItem xs="3">
+                    <MudTextField 
+                                  ShrinkLabel
+                                  Label="Age"
+                                  @bind-Value="model.Age"
+                                  For="@(() => model.Age)" />
+                </MudItem>
+            </MudGrid>
+            <MudDatePicker Class="mb-5" Label="Date of Birth" @bind-Date="_date" />
+            <MudTextField Class="mb-5" 
+                          Label="Department"
+                          ShrinkLabel
+                          @bind-Value="model.Department"
+                          For="@(() => model.Department)" />
+            <MudTextField 
+                          ShrinkLabel
+                          Label="Phone Number"
+                          @bind-Value="model.PhoneNumber"
+                          For="@(() => model.PhoneNumber)" />
+
+            <DialogActions Style="display: flex; justify-content: flex-end; gap: 10px; margin-top:3rem; margin-bottom:1rem;">
+                <MudButton Variant="Variant.Filled" ButtonType="ButtonType.Submit" Color="Color.Primary">Save</MudButton>
+                <MudButton Variant="Variant.Filled" OnClick="Cancel">Cancel</MudButton>
+            </DialogActions>
+        </EditForm>
     </DialogContent>
-    <DialogActions>
-        <MudButton OnClick="Cancel">Cancel</MudButton>
-        <MudButton Color="Color.Primary" OnClick="Submit">Ok</MudButton>
-    </DialogActions>
 </MudDialog>
+
+@code {
+    private EmployeeViewModel model = new EmployeeViewModel
+    {
+        FullName = "John Doe", // Data dummy
+        Age = 30,              // Data dummy
+        Department = "IT",     // Data dummy
+        PhoneNumber = "1234567890" // Data dummy
+    };
+
+    private DateTime? _date { get; set; } = DateTime.Today;
+
+    private async Task OnValidSubmit()
+    {
+        // Simulate saving the data
+        Console.WriteLine($"Full Name: {model.FullName}");
+        Console.WriteLine($"Age: {model.Age}");
+        Console.WriteLine($"Department: {model.Department}");
+        Console.WriteLine($"Phone Number: {model.PhoneNumber}");
+        Console.WriteLine($"Date of Birth: {_date?.ToString("yyyy-MM-dd")}");
+
+        // Simulate success
+        // Snackbar.Add("Employee saved successfully!", Severity.Success);
+        MudDialog.Close();
+    }
+
+    private void Cancel()
+    {
+        MudDialog.Cancel();
+    }
+
+    public class EmployeeViewModel
+    {
+        [Required]
+        public string FullName { get; set; }
+
+        [Required]
+        public int Age { get; set; }
+
+        [Required]
+        public string Department { get; set; }
+
+        [Required]
+        public string PhoneNumber { get; set; }
+
+        public DateTime? DateOfBirth { get; set; }
+    }
+}
